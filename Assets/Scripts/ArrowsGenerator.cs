@@ -4,22 +4,39 @@ using System.Collections;
 
 public class ArrowsGenerator : MonoBehaviour
 {
-    [SerializeField]private Transform arrowsParent;
-    [SerializeField,SerializedDictionary] private SerializedDictionary<ArrowType,Arrow> arrowKeyValue;
-    [SerializeField] private float tempoBPM = 120f;
+    [SerializeField] private RectTransform arrowsParent;
+    [SerializeField, SerializedDictionary] private SerializedDictionary<ArrowType, Arrow> arrowKeyValue;
+    [SerializeField] private float tempoBPM = 130f;
+    [SerializeField] private AudioSource song;
+    [SerializeField] private RectTransform targetRect;
+    [SerializeField] private int beatsToReachTarget = 2;
 
-    private void Start()=> StartCoroutine(GenerateArrowsBasedOnTempo());
+    private float interval;
+    private float nextTimeToGenerate;
 
-    public void GenerateArrow(ArrowType arrowType) => Instantiate(arrowKeyValue[arrowType], arrowsParent);
-
-    private IEnumerator GenerateArrowsBasedOnTempo()
+    private void Start()
     {
-        float interval = 60f/tempoBPM;
-        while (true)
+        interval = 60f / tempoBPM;
+        nextTimeToGenerate = interval;
+        song.Play();
+    }
+
+    private void Update()
+    {
+        if (song.isPlaying && song.time >= nextTimeToGenerate)
         {
             GenerateRandomArrow();
-            yield return new WaitForSeconds(interval);
+            nextTimeToGenerate += interval;
         }
+    }
+
+    public void GenerateArrow(ArrowType arrowType)
+    {
+        Arrow arrow = Instantiate(arrowKeyValue[arrowType], arrowsParent);
+        RectTransform arrowRect = arrow.GetComponent<RectTransform>();
+        float distance = Mathf.Abs(arrowRect.anchoredPosition.y - targetRect.anchoredPosition.y);
+        float time = (60f / tempoBPM) * beatsToReachTarget;
+        arrow.SetSpeed(distance, time);
     }
 
     private void GenerateRandomArrow()
