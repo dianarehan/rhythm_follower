@@ -1,73 +1,77 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] Transform arrowsParent;
-    [SerializeField] float allowedDistance = 50;
+    [SerializeField] private RectTransform arrowsParent;
+    [SerializeField] private RectTransform targetArrow;
+    [SerializeField] private float allowedDistance = 30f;
 
-    public UnityEvent OnArrowHit = new UnityEvent();
-    public UnityEvent OnArrowMiss = new UnityEvent();
+    public event Action OnArrowHit;
+    public event Action OnArrowMiss;
 
-    List<Arrow> arrows = new List<Arrow>();
+    private List<Arrow> arrows = new List<Arrow>();
+    private int score = 0;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            CheckIdxArrow(0, ArrowType.Up);
-        }
-        else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            CheckIdxArrow(1, ArrowType.Down);
-        }
-        else if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            CheckIdxArrow(2, ArrowType.Left);
-        }
-        else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            CheckIdxArrow(3, ArrowType.Right);
-        }
-    }
-
-    void GetAllArrows()
-    {
-        arrows.Clear();
-        for (int i = 3; i < arrowsParent.childCount; i++)
-        {
-            arrows.Add(arrowsParent.GetChild(i).GetComponent<Arrow>());
-        }
-    }
-
-
-
-    void CheckIdxArrow(int _idx, ArrowType _arrowType)
+    private void Update()
     {
         GetAllArrows();
+        CheckArrowsPosition();
+    }
 
+    private void GetAllArrows()
+    {
+        arrows.Clear();
+        for (int i = 0; i < arrowsParent.childCount; i++)
+        {
+            Arrow arrow = arrowsParent.GetChild(i).GetComponent<Arrow>();
+            if(arrow != null)
+                arrows.Add(arrow);  
+        }
+    }
+
+    private void CheckArrowsPosition()
+    {
         foreach (Arrow arrow in arrows)
         {
-            if (arrow.ArrowType == _arrowType)
+            RectTransform arrowRectTransform = arrow.GetComponent<RectTransform>();
+            float distance = Mathf.Abs(targetArrow.anchoredPosition.y - arrowRectTransform.anchoredPosition.y);
+            if (distance < allowedDistance)
             {
-                float _dis = arrowsParent.GetChild(_idx).position.y - arrow.transform.position.y;
-                if (_dis < allowedDistance)
+                if (IsCorrectKeyPressed(arrow.ArrowType))
                 {
-                    OnArrowHit.Invoke();
-                    Debug.Log("Hit");
-                    return;
-                }
+                    OnArrowHit?.Invoke();
+                    score += 10;
+                    Debug.Log("Hit. Score: " + score);
+                    Destroy(arrow.gameObject);
+                }  
+            }
+            else if (arrowRectTransform.anchoredPosition.y < targetArrow.anchoredPosition.y - allowedDistance)
+            {
+                OnArrowMiss?.Invoke();
+                score -= 5;
+                Debug.Log("Miss. Score: " + score);
+                Destroy(arrow.gameObject);
             }
         }
-        Debug.Log("Miss");
-        OnArrowMiss.Invoke();
+    }
+
+    private bool IsCorrectKeyPressed(ArrowType arrowType)
+    {
+        switch (arrowType)
+        {
+            case ArrowType.Up:
+                return Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow);
+            case ArrowType.Down:
+                return Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow);
+            case ArrowType.Left:
+                return Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow);
+            case ArrowType.Right:
+                return Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow);
+            default:
+                return false;
+        }
     }
 }

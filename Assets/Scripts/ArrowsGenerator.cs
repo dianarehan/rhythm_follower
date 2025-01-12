@@ -1,43 +1,31 @@
+using AYellowpaper.SerializedCollections;
 using UnityEngine;
+using System.Collections;
 
 public class ArrowsGenerator : MonoBehaviour
 {
-    [SerializeField] Transform arrowsParent;
-    [SerializeField] GameObject UpArrow;
-    [SerializeField] GameObject DownArrow;
-    [SerializeField] GameObject LeftArrow;
-    [SerializeField] GameObject RightArrow;
+    [SerializeField]private Transform arrowsParent;
+    [SerializeField,SerializedDictionary] private SerializedDictionary<ArrowType,Arrow> arrowKeyValue;
+    [SerializeField] private float tempoBPM = 120f;
 
+    private void Start()=> StartCoroutine(GenerateArrowsBasedOnTempo());
 
-    public void GenerateUpArrow()
+    public void GenerateArrow(ArrowType arrowType) => Instantiate(arrowKeyValue[arrowType], arrowsParent);
+
+    private IEnumerator GenerateArrowsBasedOnTempo()
     {
-        Instantiate(UpArrow, arrowsParent);
+        float interval = 60f/tempoBPM;
+        while (true)
+        {
+            GenerateRandomArrow();
+            yield return new WaitForSeconds(interval);
+        }
     }
 
-    public void GenerateDownArrow()
+    private void GenerateRandomArrow()
     {
-        Instantiate(DownArrow, arrowsParent);
-    }
-
-    public void GenerateLeftArrow()
-    {
-        Instantiate(LeftArrow, arrowsParent);
-    }
-
-    public void GenerateRightArrow()
-    {
-        Instantiate(RightArrow, arrowsParent);
-    }
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        ArrowType[] arrowTypes = (ArrowType[])System.Enum.GetValues(typeof(ArrowType));
+        ArrowType randomArrowType = arrowTypes[Random.Range(0, arrowTypes.Length)];
+        GenerateArrow(randomArrowType);
     }
 }
