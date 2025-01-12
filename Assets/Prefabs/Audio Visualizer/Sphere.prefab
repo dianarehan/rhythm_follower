@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 727083799600303345}
   - component: {fileID: 8966367633894020964}
   - component: {fileID: 4777264177202098728}
+  - component: {fileID: 6086456758435064787}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -129,6 +130,27 @@ MonoBehaviour:
   beatScale: {x: 2, y: 2, z: 2}
   restScale: {x: 1, y: 1, z: 1}
 --- !u!114 &4777264177202098728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8348219994536702762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16cb4c18f40fa8341bd24472a0b545df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bias: 27
+  timeStep: 0.15
+  timeToBeat: 0.05
+  restSmoothTime: 2
+  beatColors:
+  - {r: 0.509434, g: 0.14898534, b: 0.14898534, a: 0}
+  - {r: 0.4037736, g: 0.05409043, b: 0.19649372, a: 0}
+  - {r: 0.20018722, g: 0.17282307, b: 0.3283019, a: 0}
+  restColor: {r: 1, g: 1, b: 1, a: 0}
+--- !u!114 &6086456758435064787
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
