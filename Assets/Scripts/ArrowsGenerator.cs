@@ -14,16 +14,16 @@ public class ArrowsGenerator : MonoBehaviour
 
     private double nextSpawnTime;
     private double beatsToSeconds;
-    private double firstBeatOffset = 0;
-    private float spawnY = 800f;  // Spawn position Y (top of screen)
-    private float targetY = 100f; // Target position Y (where arrows should be hit)
+    private double firstBeatOffset = 1;
+    private float spawnY = 800f;
+    private float targetY = 100f;
 
     private void Start()
     {
         beatsToSeconds = 60.0 / tempoBPM;
         nextSpawnTime = AudioSettings.dspTime + firstBeatOffset;
 
-        musicSource.PlayScheduled(AudioSettings.dspTime + SPAWN_AHEAD_TIME);
+        musicSource.PlayScheduled(AudioSettings.dspTime+3 + SPAWN_AHEAD_TIME);
         StartCoroutine(GenerateArrowsRoutine());
     }
 
@@ -38,7 +38,6 @@ public class ArrowsGenerator : MonoBehaviour
                 GenerateRandomArrow(nextSpawnTime);
                 nextSpawnTime += beatsToSeconds;
             }
-
             yield return null;
         }
     }

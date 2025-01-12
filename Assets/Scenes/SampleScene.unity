@@ -417,7 +417,9 @@ MonoBehaviour:
       Value: {fileID: -9121442373934148720, guid: 1123156fc155c4c46a9b9bb465d5bf6f, type: 3}
     - Key: 3
       Value: {fileID: -7439042215836614303, guid: b26b2368f0834dd41817a24700d64aa0, type: 3}
-  tempoBPM: 130
+  targetArrowsContainer: {fileID: 1297858241}
+  tempoBPM: 147
+  musicSource: {fileID: 2111164685}
 --- !u!4 &470396173
 Transform:
   m_ObjectHideFlags: 0
@@ -937,8 +939,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   arrowsParent: {fileID: 599033519}
-  targetArrow: {fileID: 1727734519}
-  allowedDistance: 50
+  hitWindowSeconds: 0.15
+  musicSource: {fileID: 2111164685}
 --- !u!4 &1170389407
 Transform:
   m_ObjectHideFlags: 0
@@ -1411,8 +1413,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 5e712ce79baadae4395b2cd04114cb8a, type: 3}
-  m_Resource: {fileID: 8300000, guid: 5e712ce79baadae4395b2cd04114cb8a, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 29acfddc63467fd42bd022287889ab36, type: 3}
+  m_Resource: {fileID: 8300000, guid: 29acfddc63467fd42bd022287889ab36, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
