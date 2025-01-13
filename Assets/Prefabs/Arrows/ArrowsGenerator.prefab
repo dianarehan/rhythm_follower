@@ -56,5 +56,5 @@ MonoBehaviour:
     - Key: 3
       Value: {fileID: -7439042215836614303, guid: b26b2368f0834dd41817a24700d64aa0, type: 3}
   targetArrowsContainer: {fileID: 0}
-  tempoBPM: 125
+  tempoBPM: 147
   musicSource: {fileID: 0}
