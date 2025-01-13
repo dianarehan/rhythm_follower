@@ -11,7 +11,7 @@ public class DanceAnimator : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-        StartCoroutine(GetRandomDanceClip());
+        //StartCoroutine(GetRandomDanceClip());
     }
 
     private IEnumerator GetRandomDanceClip()
