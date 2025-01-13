@@ -3,12 +3,11 @@ using UnityEngine;
 
 public class DanceAnimator : MonoBehaviour
 {
-    Animator animator;
+    private Animator animator;
 
-    float curSpeed;
-    float changePerHit = 0.05f;
+    private float curSpeed;
+    private float changePerHit = 0.05f;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         animator = GetComponent<Animator>();
