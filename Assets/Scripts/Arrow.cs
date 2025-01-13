@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 [System.Serializable]
 public class Arrow : MonoBehaviour
@@ -43,5 +44,21 @@ public class Arrow : MonoBehaviour
 
         RectTransform rect = GetComponent<RectTransform>();
         rect.anchoredPosition = new Vector2(rect.anchoredPosition.x, currentY);
+    }
+
+    public IEnumerator AnimateAndDestroyArrow(Arrow arrow)
+    {
+        RectTransform rect = arrow.GetComponent<RectTransform>();
+        float elapsed = 0f;
+        float duration = 0.2f;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float scale = Mathf.Lerp(1f, 1.5f, elapsed / duration);
+            rect.localScale = new Vector3(scale, scale, 1f);
+            yield return null;
+        }
+        Destroy(arrow.gameObject);
     }
 }

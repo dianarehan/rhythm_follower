@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
                     break;
                 }
             }
-            else if (timeDifference < -hitWindowSeconds)
+            else if (timeDifference < -0.5*hitWindowSeconds)
             {
                 HandleMiss(arrow);
             }
@@ -76,7 +76,7 @@ public class GameManager : MonoBehaviour
         score += points;
         OnArrowHit?.Invoke();
         Debug.Log($"{rating}! Score: {score}");
-        Destroy(arrow.gameObject);
+        arrow.StartCoroutine(arrow.AnimateAndDestroyArrow(arrow));
     }
 
     private void HandleMiss(Arrow arrow)
