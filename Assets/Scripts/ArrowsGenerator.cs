@@ -21,19 +21,20 @@ public class ArrowsGenerator : MonoBehaviour
     private void Start()
     {
         beatsToSeconds = 60.0 / tempoBPM;
-        nextSpawnTime = AudioSettings.dspTime + firstBeatOffset;
+        double startTime = AudioSettings.dspTime + 3 + SPAWN_AHEAD_TIME;
+        nextSpawnTime = startTime + firstBeatOffset;
 
-        musicSource.PlayScheduled(AudioSettings.dspTime+3 + SPAWN_AHEAD_TIME);
-        StartCoroutine(GenerateArrowsRoutine());
+        musicSource.PlayScheduled(startTime);
+        StartCoroutine(GenerateArrowsRoutine(startTime));
     }
 
-    private IEnumerator GenerateArrowsRoutine()
+    private IEnumerator GenerateArrowsRoutine(double startTime)
     {
         while (true)
         {
             double currentTime = AudioSettings.dspTime;
 
-            if (currentTime + SPAWN_AHEAD_TIME >= nextSpawnTime)
+            if (currentTime >= startTime && currentTime + SPAWN_AHEAD_TIME >= nextSpawnTime)
             {
                 GenerateRandomArrow(nextSpawnTime);
                 nextSpawnTime += beatsToSeconds;

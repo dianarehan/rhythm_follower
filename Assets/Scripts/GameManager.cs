@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
         GetAllArrows();
         CheckArrowTiming();
 
-        score = Mathf.Clamp(score, 0, 500);
+        score = Mathf.Clamp(score, 0, 10000);
         scoreSlider.value = score;
     }
 
