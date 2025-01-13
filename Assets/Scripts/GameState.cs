@@ -8,6 +8,7 @@ public class GameState: MonoBehaviour
 
     private void Awake()
     {
+        gameState = GameStatus.MainMenu;
         if (Instance == null)
         {
             Instance = this;
@@ -18,6 +19,7 @@ public class GameState: MonoBehaviour
             Destroy(gameObject);
         }
     }
+    public void ChangeGameState(GameStatus newState)=>gameState = newState;
 }
 public enum GameStatus
 {
