@@ -1,15 +1,15 @@
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
 public class TextFeedback : MonoBehaviour
 {
-    List<string> positiveWords = new List<string>
+   [SerializeField] private List<string> positiveWords = new List<string>
         {
             "Epic",
             "Lit",
             "Fire",
-            "Winner",
             "Vibing",
             "Bet",
             "Hard",
@@ -17,40 +17,66 @@ public class TextFeedback : MonoBehaviour
             "Hell yeah"
         };
 
-    List<string> negativeWords = new List<string>
+    [SerializeField] private List<string> negativeWords = new List<string>
         {
             "Miss",
             "Mid",
             "Bruh",
             "Meh",
-            "Womp",
             "Loser"
         };
 
-    TextMeshProUGUI feedbackText;
-    static int streak = 0;
+    private float displayDuration = 2f;
+    private TextMeshProUGUI feedbackText;
+    private static int streak = 0;
+    private int counter = 0;
+    private bool isCooldownActive = false;
+    private float cooldownDuration = 1f;
 
-    private void Awake()=>feedbackText = GetComponent<TextMeshProUGUI>();
+    private void Awake()
+    {
+        cooldownDuration= 3f;
+        feedbackText = GetComponent<TextMeshProUGUI>();
+    }
     
     public void ShowGoodMsg()
     {
-        if (streak > 3)
-            feedbackText.text = "Combo x" + streak;
-        
+        if (isCooldownActive) return;
+
+        if (counter %2==0)
+        {
+            if (streak > 3)
+                feedbackText.text = "Combo x" + streak;
+            cooldownDuration = 1f;
+        }
         else
         {
             feedbackText.text = positiveWords[Random.Range(0, positiveWords.Count)];
+            cooldownDuration = 2f;
         }
+       counter++;
         gameObject.SetActive(false);
         gameObject.SetActive(true);
+        StartCoroutine(Cooldown());
         streak++;
     }
 
     public void ShowBadMsg()
     {
+        streak = 0;
+        if (isCooldownActive) return;
+        
         feedbackText.text = negativeWords[Random.Range(0, negativeWords.Count)];
         gameObject.SetActive(false);
         gameObject.SetActive(true);
-        streak = 0;
+        cooldownDuration = 2f;
+        StartCoroutine(Cooldown());
+    }
+
+    private IEnumerator Cooldown()
+    {
+        isCooldownActive = true;
+        yield return new WaitForSeconds(cooldownDuration);
+        isCooldownActive = false;
     }
 }

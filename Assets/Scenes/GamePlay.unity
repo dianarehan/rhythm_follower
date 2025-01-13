@@ -760,40 +760,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 317ccc9b0bba0964cb393d4edb156d62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &576209862 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1651577680485352870, guid: 170254d893f73644da60dd8131ce3e79, type: 3}
+--- !u!114 &576209868 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6694676081415286776, guid: 170254d893f73644da60dd8131ce3e79, type: 3}
   m_PrefabInstance: {fileID: 8973879920741879761}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &576209867
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 576209862}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 565bb474cc0ac2f46ac87f05f1939e84, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
---- !u!114 &576209868
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 576209862}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 226d578159948494b8695a993ee4e93f, type: 3}
@@ -2105,13 +2077,117 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7087416732246022736, guid: 170254d893f73644da60dd8131ce3e79, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -624
+    - target: {fileID: 6082016320826524888, guid: 170254d893f73644da60dd8131ce3e79, type: 3}
+      propertyPath: m_text
+      value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 7087416732246022736, guid: 170254d893f73644da60dd8131ce3e79, type: 3}
-      propertyPath: m_ConstrainProportionsScale
+    - target: {fileID: 6082016320826524888, guid: 170254d893f73644da60dd8131ce3e79, type: 3}
+      propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6082016320826524888, guid: 170254d893f73644da60dd8131ce3e79, type: 3}
+      propertyPath: m_Maskable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6082016320826524888, guid: 170254d893f73644da60dd8131ce3e79, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
+    - target: {fileID: 6082016320826524888, guid: 170254d893f73644da60dd8131ce3e79, type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6082016320826524888, guid: 170254d893f73644da60dd8131ce3e79, type: 3}
+      propertyPath: m_isRichText
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6082016320826524888, guid: 170254d893f73644da60dd8131ce3e79, type: 3}
+      propertyPath: m_overflowMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6082016320826524888, guid: 170254d893f73644da60dd8131ce3e79, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6082016320826524888, guid: 170254d893f73644da60dd8131ce3e79, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
+    - target: {fileID: 6082016320826524888, guid: 170254d893f73644da60dd8131ce3e79, type: 3}
+      propertyPath: m_TextStyleHashCode
+      value: -1183493901
+      objectReference: {fileID: 0}
+    - target: {fileID: 6082016320826524888, guid: 170254d893f73644da60dd8131ce3e79, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 6082016320826524888, guid: 170254d893f73644da60dd8131ce3e79, type: 3}
+      propertyPath: m_wordWrappingRatios
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6082016320826524888, guid: 170254d893f73644da60dd8131ce3e79, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6082016320826524888, guid: 170254d893f73644da60dd8131ce3e79, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6082016320826524888, guid: 170254d893f73644da60dd8131ce3e79, type: 3}
+      propertyPath: m_parseCtrlCharacters
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6082016320826524888, guid: 170254d893f73644da60dd8131ce3e79, type: 3}
+      propertyPath: m_EmojiFallbackSupport
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6082016320826524888, guid: 170254d893f73644da60dd8131ce3e79, type: 3}
+      propertyPath: m_enableVertexGradient
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6082016320826524888, guid: 170254d893f73644da60dd8131ce3e79, type: 3}
+      propertyPath: m_useMaxVisibleDescender
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6082016320826524888, guid: 170254d893f73644da60dd8131ce3e79, type: 3}
+      propertyPath: m_fontColorGradient.topLeft.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6082016320826524888, guid: 170254d893f73644da60dd8131ce3e79, type: 3}
+      propertyPath: m_fontColorGradient.topLeft.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6082016320826524888, guid: 170254d893f73644da60dd8131ce3e79, type: 3}
+      propertyPath: m_fontColorGradient.topLeft.r
+      value: 0.53710556
+      objectReference: {fileID: 0}
+    - target: {fileID: 6082016320826524888, guid: 170254d893f73644da60dd8131ce3e79, type: 3}
+      propertyPath: m_fontColorGradient.topRight.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6082016320826524888, guid: 170254d893f73644da60dd8131ce3e79, type: 3}
+      propertyPath: m_fontColorGradient.topRight.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6082016320826524888, guid: 170254d893f73644da60dd8131ce3e79, type: 3}
+      propertyPath: m_fontColorGradient.topRight.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6082016320826524888, guid: 170254d893f73644da60dd8131ce3e79, type: 3}
+      propertyPath: m_ActiveFontFeatures.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6082016320826524888, guid: 170254d893f73644da60dd8131ce3e79, type: 3}
+      propertyPath: 'm_ActiveFontFeatures.Array.data[1]'
+      value: 1818847073
+      objectReference: {fileID: 0}
+    - target: {fileID: 6082016320826524888, guid: 170254d893f73644da60dd8131ce3e79, type: 3}
+      propertyPath: 'm_ActiveFontFeatures.Array.data[2]'
+      value: 1835102827
+      objectReference: {fileID: 0}
+    - target: {fileID: 6082016320826524888, guid: 170254d893f73644da60dd8131ce3e79, type: 3}
+      propertyPath: 'm_ActiveFontFeatures.Array.data[3]'
+      value: 1835756907
       objectReference: {fileID: 0}
     - target: {fileID: 7734116059789109544, guid: 170254d893f73644da60dd8131ce3e79, type: 3}
       propertyPath: m_Pivot.x
@@ -2200,13 +2276,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1651577680485352870, guid: 170254d893f73644da60dd8131ce3e79, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 576209867}
-    - targetCorrespondingSourceObject: {fileID: 1651577680485352870, guid: 170254d893f73644da60dd8131ce3e79, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 576209868}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 170254d893f73644da60dd8131ce3e79, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
