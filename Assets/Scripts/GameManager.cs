@@ -1,12 +1,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private RectTransform arrowsParent;
     [SerializeField] private float hitWindowSeconds = 0.15f;
     [SerializeField] private AudioSource musicSource;
+    [SerializeField] private Slider scoreSlider;
+
 
     public UnityEvent OnArrowHit;
     public UnityEvent OnArrowMiss;
@@ -18,6 +21,9 @@ public class GameManager : MonoBehaviour
     {
         GetAllArrows();
         CheckArrowTiming();
+
+        score = Mathf.Clamp(score, 0, 500);
+        scoreSlider.value = score;
     }
 
     private void GetAllArrows()
