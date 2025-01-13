@@ -61,17 +61,17 @@ public class GameManager : MonoBehaviour
         if (timing < 0.05f)
         {
             rating = "PERFECT";
-            points = 100;
+            points = 50;
         }
         else if (timing < 0.10f)
         {
             rating = "GREAT";
-            points = 75;
+            points = 35;
         }
         else
         {
             rating = "GOOD";
-            points = 50;
+            points = 20;
         }
 
         score += points;

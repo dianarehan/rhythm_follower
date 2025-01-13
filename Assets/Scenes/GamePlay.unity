@@ -2077,6 +2077,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1626800204111273863, guid: 170254d893f73644da60dd8131ce3e79, type: 3}
+      propertyPath: playButton
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1626800204111273863, guid: 170254d893f73644da60dd8131ce3e79, type: 3}
+      propertyPath: quitButton
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6082016320826524888, guid: 170254d893f73644da60dd8131ce3e79, type: 3}
       propertyPath: m_text
       value: 
@@ -2273,8 +2281,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedComponents:
+    - {fileID: 1626800204111273863, guid: 170254d893f73644da60dd8131ce3e79, type: 3}
+    - {fileID: 4448183350183785909, guid: 170254d893f73644da60dd8131ce3e79, type: 3}
+    m_RemovedGameObjects:
+    - {fileID: 6506036179652219812, guid: 170254d893f73644da60dd8131ce3e79, type: 3}
+    - {fileID: 678593501456451196, guid: 170254d893f73644da60dd8131ce3e79, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 170254d893f73644da60dd8131ce3e79, type: 3}
