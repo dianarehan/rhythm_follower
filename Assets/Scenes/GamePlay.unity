@@ -2106,6 +2106,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 7087416732246022736, guid: 170254d893f73644da60dd8131ce3e79, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -624
+      objectReference: {fileID: 0}
+    - target: {fileID: 7087416732246022736, guid: 170254d893f73644da60dd8131ce3e79, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
