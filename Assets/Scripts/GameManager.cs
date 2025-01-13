@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
@@ -7,8 +8,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float hitWindowSeconds = 0.15f;
     [SerializeField] private AudioSource musicSource;
 
-    public event System.Action OnArrowHit;
-    public event System.Action OnArrowMiss;
+    public UnityEvent OnArrowHit;
+    public UnityEvent OnArrowMiss;
 
     private List<Arrow> activeArrows = new List<Arrow>();
     private int score = 0;

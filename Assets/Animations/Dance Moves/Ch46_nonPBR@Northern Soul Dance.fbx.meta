@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8aa236bfb951bf24e9ef783672ca2144
+guid: 0ee5a45e8f2eb9a4a81d8c35bf8ac0b2
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -31,11 +31,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Silly Dancing
+      name: Northern Soul Dance
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0
-      lastFrame: 108
+      lastFrame: 482
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
