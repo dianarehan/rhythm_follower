@@ -40,7 +40,7 @@ public class DanceAnimator : MonoBehaviour
     {
         curSpeed += changePerHit;
         curSpeed = Mathf.Clamp(curSpeed, 0.1f, 1.5f);
-        animator.speed += curSpeed;
+        animator.speed = curSpeed;
     }
 
     public void OnArrowMiss()
