@@ -1182,7 +1182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   arrowsParent: {fileID: 435489599}
-  hitWindowSeconds: 0.15
+  hitWindowSeconds: 0.2
   musicSource: {fileID: 340854300}
 --- !u!4 &983791000
 Transform:

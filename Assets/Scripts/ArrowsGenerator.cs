@@ -16,7 +16,7 @@ public class ArrowsGenerator : MonoBehaviour
     private double beatsToSeconds;
     private double firstBeatOffset = 1;
     private float spawnY = 800f;
-    private float targetY = 100f;
+    private float targetY = 50f;
 
     private void Start()
     {
