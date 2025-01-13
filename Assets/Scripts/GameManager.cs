@@ -1,61 +1,90 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private RectTransform arrowsParent;
-    [SerializeField] private RectTransform targetArrow;
-    [SerializeField] private float allowedDistance = 30f;
+    [SerializeField] private float hitWindowSeconds = 0.15f;
+    [SerializeField] private AudioSource musicSource;
 
-    public event Action OnArrowHit;
-    public event Action OnArrowMiss;
+    public event System.Action OnArrowHit;
+    public event System.Action OnArrowMiss;
 
-    private List<Arrow> arrows = new List<Arrow>();
+    private List<Arrow> activeArrows = new List<Arrow>();
     private int score = 0;
 
     private void Update()
     {
         GetAllArrows();
-        CheckArrowsPosition();
+        CheckArrowTiming();
     }
 
     private void GetAllArrows()
     {
-        arrows.Clear();
+        activeArrows.Clear();
         for (int i = 0; i < arrowsParent.childCount; i++)
         {
-            Arrow arrow = arrowsParent.GetChild(i).GetComponent<Arrow>();
-            if(arrow != null)
-                arrows.Add(arrow);  
+            if (arrowsParent.GetChild(i).TryGetComponent(out Arrow arrow))
+                activeArrows.Add(arrow);
         }
     }
 
-    private void CheckArrowsPosition()
+    private void CheckArrowTiming()
     {
-        foreach (Arrow arrow in arrows)
+        double currentTime = AudioSettings.dspTime;
+
+        foreach (Arrow arrow in activeArrows)
         {
-            RectTransform arrowRectTransform = arrow.GetComponent<RectTransform>();
-            float distance = Mathf.Abs(targetArrow.anchoredPosition.y - arrowRectTransform.anchoredPosition.y);
-            if (distance < allowedDistance)
+            double timeDifference = arrow.TargetTime - currentTime;
+
+            if (Mathf.Abs((float)timeDifference) < hitWindowSeconds)
             {
                 if (IsCorrectKeyPressed(arrow.ArrowType))
                 {
-                    OnArrowHit?.Invoke();
-                    score += 10;
-                    Debug.Log("Hit. Score: " + score);
-                    Destroy(arrow.gameObject);
-                }  
+                    HandleHit(arrow, Mathf.Abs((float)timeDifference));
+                    break;
+                }
             }
-            else if (arrowRectTransform.anchoredPosition.y < targetArrow.anchoredPosition.y - allowedDistance)
+            else if (timeDifference < -hitWindowSeconds)
             {
-                OnArrowMiss?.Invoke();
-                score -= 5;
-                Debug.Log("Miss. Score: " + score);
-                Destroy(arrow.gameObject);
+                HandleMiss(arrow);
             }
         }
+    }
+
+    private void HandleHit(Arrow arrow, float timing)
+    {
+        string rating;
+        int points;
+
+        if (timing < 0.05f)
+        {
+            rating = "PERFECT";
+            points = 100;
+        }
+        else if (timing < 0.10f)
+        {
+            rating = "GREAT";
+            points = 75;
+        }
+        else
+        {
+            rating = "GOOD";
+            points = 50;
+        }
+
+        score += points;
+        OnArrowHit?.Invoke();
+        Debug.Log($"{rating}! Score: {score}");
+        Destroy(arrow.gameObject);
+    }
+
+    private void HandleMiss(Arrow arrow)
+    {
+        OnArrowMiss?.Invoke();
+        score -= 5;
+        Debug.Log($"MISS! Score: {score}");
+        Destroy(arrow.gameObject);
     }
 
     private bool IsCorrectKeyPressed(ArrowType arrowType)

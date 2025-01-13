@@ -4,15 +4,44 @@ using UnityEngine;
 public class Arrow : MonoBehaviour
 {
     [SerializeField] private ArrowType arrowType;
-    [SerializeField] private float speed = 5f;
+    private float targetTime;
+    private float startY;
+    private float targetY;
 
-    public ArrowType ArrowType { get { return arrowType; } }
-    public float Speed { get { return speed; } set { speed = value; } }
+    public ArrowType ArrowType => arrowType;
+    public float TargetTime { get => targetTime; set => targetTime = value; }
+
+    public void Initialize(float startYPosition, float targetYPosition, float targetHitTime)
+    {
+        RectTransform rect = GetComponent<RectTransform>();
+        startY = startYPosition;
+        targetY = targetYPosition;
+        targetTime = targetHitTime;
+
+        float xPos = GetXPositionForArrowType(arrowType);
+        rect.anchoredPosition = new Vector2(xPos, startY);
+    }
+
+    private float GetXPositionForArrowType(ArrowType type)
+    {
+        switch (type)
+        {
+            case ArrowType.Up: return -300f;
+            case ArrowType.Down: return -100f;
+            case ArrowType.Left: return 100f;
+            case ArrowType.Right: return 300f;
+            default: return 0f;
+        }
+    }
 
     void Update()
     {
-        transform.Translate(0, -speed * Time.deltaTime, 0);
-        if (transform.position.y < -10)
-            Destroy(gameObject); 
+        float progress = (float)(1 - ((targetTime - AudioSettings.dspTime) / ArrowsGenerator.SPAWN_AHEAD_TIME));
+        progress = Mathf.Clamp01(progress);
+
+        float currentY = Mathf.Lerp(startY, targetY, progress);
+
+        RectTransform rect = GetComponent<RectTransform>();
+        rect.anchoredPosition = new Vector2(rect.anchoredPosition.x, currentY);
     }
 }
