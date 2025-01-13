@@ -16,24 +16,37 @@ public class DanceAnimator : MonoBehaviour
 
     private IEnumerator GetRandomDanceClip()
     {
-        yield return new WaitForSeconds(animator.GetCurrentAnimatorClipInfo(0).Length);
+        // Wait for the current animation to finish
+        yield return new WaitForSeconds(GetCurrentAnimationLength());
 
+        // Pick a random dance clip
         int _newIdx = Random.Range(1, 11);
         animator.Play("Dance" + _newIdx.ToString());
-        GetRandomDanceClip();
+
+        // Repeat the process
+        StartCoroutine(GetRandomDanceClip());
+    }
+
+    private float GetCurrentAnimationLength()
+    {
+        // Get the current animation clip information from the animator
+        AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+
+        // Return the length of the current animation
+        return stateInfo.length - stateInfo.normalizedTime % 1 * stateInfo.length;
     }
 
     public void OnArrowHit()
     {
         curSpeed += changePerHit;
-        curSpeed = Mathf.Clamp(curSpeed, 0f, 2f);
+        curSpeed = Mathf.Clamp(curSpeed, 0.1f, 1.5f);
         animator.speed += curSpeed;
     }
 
     public void OnArrowMiss()
     {
         curSpeed -= changePerHit;
-        curSpeed = Mathf.Clamp(curSpeed, 0f, 2f);
+        curSpeed = Mathf.Clamp(curSpeed, 0.1f, 1.5f);
         animator.speed = curSpeed;
     }
 }
