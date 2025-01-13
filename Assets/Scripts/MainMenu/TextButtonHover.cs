@@ -6,13 +6,16 @@ public class TextButtonHover : MonoBehaviour, IPointerEnterHandler, IPointerExit
 {
     [SerializeField] private Color normalColor = Color.white;
     [SerializeField] private Color hoverColor = new Color(251, 255,113);
+    [SerializeField] private float sizeMultiplier = 1.1f;
+    [SerializeField] private AudioClip clickSound;
 
     private TextMeshProUGUI textMeshPro;
-    private float sizeMultiplier = 1.1f;
+    private AudioSource audioSource;
 
     private void Awake()
     {
         textMeshPro = GetComponentInChildren<TextMeshProUGUI>();
+        audioSource = FindAnyObjectByType<AudioSource>();
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -28,4 +31,6 @@ public class TextButtonHover : MonoBehaviour, IPointerEnterHandler, IPointerExit
         textMeshPro.gameObject.transform.localScale /= sizeMultiplier;
         gameObject.transform.localScale /= sizeMultiplier;
     }
+
+    public void PlayClickSound() => audioSource.PlayOneShot(clickSound);
 }
