@@ -114,7 +114,7 @@ public class GameManager : MonoBehaviour
     private void HandleMiss(Arrow arrow)
     {
         OnArrowMiss?.Invoke();
-        score -= 100;
+        score -= 30;
         Debug.Log($"MISS! Score: {score}");
         Destroy(arrow.gameObject);
     }
