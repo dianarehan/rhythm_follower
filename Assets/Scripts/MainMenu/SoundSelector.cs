@@ -70,5 +70,6 @@ public class SoundSelector : MonoBehaviour
         soundNameText = GameObject.Find("SoundName")?.GetComponent<TextMeshProUGUI>();
         left?.onClick.AddListener(OnLeftClick);
         right?.onClick.AddListener(OnRightClick);
+        soundNameText?.SetText(CurrentSound.Clip.name);
     }
 }
