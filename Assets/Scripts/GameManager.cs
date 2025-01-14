@@ -53,13 +53,14 @@ public class GameManager : MonoBehaviour
         arrowsParent.gameObject.SetActive(false);
         scoreSlider.gameObject.SetActive(false);
         //play some random animatons tany gher ely fel list
+        //play sound 
         endGameCanvasGroup.alpha = 1;
-        if(score > 5000)
+        if(score > 6000)
             endGameScoreText.text= winSceneText[Random.Range(0, winSceneText.Length)];
         else
             endGameScoreText.text = loseSceneText[Random.Range(0, loseSceneText.Length)];
-
     }
+
     private void CheckArrowTiming()
     {
         double currentTime = AudioSettings.dspTime;
@@ -114,7 +115,7 @@ public class GameManager : MonoBehaviour
     private void HandleMiss(Arrow arrow)
     {
         OnArrowMiss?.Invoke();
-        score -= 50;
+        score -= 100;
         Debug.Log($"MISS! Score: {score}");
         Destroy(arrow.gameObject);
     }

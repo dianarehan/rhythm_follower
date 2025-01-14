@@ -42,13 +42,11 @@ public class ArrowsGenerator : MonoBehaviour
 
             if (currentTime >= startTime && currentTime + SPAWN_AHEAD_TIME >= nextSpawnTime)
             {
-                Debug.Log("Current Time: " + currentTime + " Next Spawn Time: " + nextSpawnTime + " Song Duration: " + songDuration);
                 if (currentTime - startTime >= songDuration)
                 {
                     OnSongEnd?.Invoke();
                     yield break;
                 }
-
                 GenerateRandomArrow(nextSpawnTime);
                 nextSpawnTime += beatsToSeconds;
             }

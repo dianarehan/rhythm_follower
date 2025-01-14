@@ -38,7 +38,14 @@ public class TextFeedback : MonoBehaviour
         cooldownDuration= 3f;
         feedbackText = GetComponent<TextMeshProUGUI>();
     }
-    
+    private void Start()
+    {
+        ArrowsGenerator arrowsGenerator = FindAnyObjectByType<ArrowsGenerator>();
+        arrowsGenerator.OnSongEnd += HandleSoundEnd;
+    }
+
+    private void HandleSoundEnd()=>Destroy(gameObject);
+
     public void ShowGoodMsg()
     {
         if (isCooldownActive) return;

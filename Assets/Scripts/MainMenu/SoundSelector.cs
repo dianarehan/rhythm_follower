@@ -69,7 +69,7 @@ public class SoundSelector : MonoBehaviour
 
     private void OnDestroy()
     {
-        left.onClick.RemoveListener(OnLeftClick);
-        right.onClick.RemoveListener(OnRightClick);
+        left?.onClick.RemoveListener(OnLeftClick);
+        right?.onClick.RemoveListener(OnRightClick);
     }
 }
