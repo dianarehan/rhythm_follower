@@ -1,9 +1,7 @@
 # **Tempo Dash**  
 
-## **Overview**  
-**Rhythm Arrows** is a dynamic rhythm game where players hit arrows in sync with the beat of the music. Combining exciting gameplay with immersive audio-visual effects, the game challenges your reflexes and rhythm mastery. With every track, the tempo sets the pace, delivering a unique and fast-paced experience!
+is a dynamic rhythm game where players hit arrows in sync with the beat of the music. Combining exciting gameplay with immersive audio-visual effects, the game challenges your reflexes and rhythm mastery. With every track, the tempo sets the pace, delivering a unique and fast-paced experience!
 
----
 
 ## **Features**  
 
@@ -20,4 +18,3 @@
 - Arrow generation speed and difficulty scale with the song's tempo.  
 - While not perfectly precise, the system creates a rhythmic experience matching the song's feel.
 
-### 🎶
