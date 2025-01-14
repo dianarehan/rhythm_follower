@@ -20,15 +20,21 @@ public class TextButtonHover : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        textMeshPro.color = hoverColor;
-        textMeshPro.gameObject.transform.localScale *= sizeMultiplier;
+        if(textMeshPro != null)
+        {
+            textMeshPro.color = hoverColor;
+            textMeshPro.gameObject.transform.localScale *= sizeMultiplier;
+        }
         gameObject.transform.localScale *= sizeMultiplier;
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        textMeshPro.color = normalColor;
-        textMeshPro.gameObject.transform.localScale /= sizeMultiplier;
+        if (textMeshPro != null)
+        {
+            textMeshPro.color = normalColor;
+            textMeshPro.gameObject.transform.localScale /= sizeMultiplier;
+        }
         gameObject.transform.localScale /= sizeMultiplier;
     }
 

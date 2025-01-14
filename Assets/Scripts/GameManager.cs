@@ -1,7 +1,9 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,13 +11,23 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float hitWindowSeconds = 0.15f;
     [SerializeField] private AudioSource musicSource;
     [SerializeField] private Slider scoreSlider;
-
+    [SerializeField] private CanvasGroup endGameCanvasGroup;
+    [SerializeField] private TextMeshProUGUI endGameScoreText;
+    [SerializeField] private Button restartButton;
+    [SerializeField] private string[] winSceneText;
+    [SerializeField] private string[] loseSceneText;
 
     public UnityEvent OnArrowHit;
     public UnityEvent OnArrowMiss;
 
     private List<Arrow> activeArrows = new List<Arrow>();
     private int score = 0;
+
+    private void Start()
+    {
+        ArrowsGenerator arrowsGenerator = FindAnyObjectByType<ArrowsGenerator>();
+        arrowsGenerator.OnSongEnd +=HandleSoundEnd;
+    }
 
     private void Update()
     {
@@ -36,6 +48,18 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void HandleSoundEnd()
+    {
+        arrowsParent.gameObject.SetActive(false);
+        scoreSlider.gameObject.SetActive(false);
+        //play some random animatons tany gher ely fel list
+        endGameCanvasGroup.alpha = 1;
+        if(score > 5000)
+            endGameScoreText.text= winSceneText[Random.Range(0, winSceneText.Length)];
+        else
+            endGameScoreText.text = loseSceneText[Random.Range(0, loseSceneText.Length)];
+
+    }
     private void CheckArrowTiming()
     {
         double currentTime = AudioSettings.dspTime;
@@ -83,7 +107,8 @@ public class GameManager : MonoBehaviour
         score += points;
         OnArrowHit?.Invoke();
         Debug.Log($"{rating}! Score: {score}");
-        arrow.StartCoroutine(arrow.AnimateAndDestroyArrow(arrow));
+        if(arrow != null)
+            arrow.StartCoroutine(arrow.AnimateAndDestroyArrow(arrow));
     }
 
     private void HandleMiss(Arrow arrow)
@@ -110,4 +135,18 @@ public class GameManager : MonoBehaviour
                 return false;
         }
     }
+
+    private void OnDestroy()
+    {
+        OnArrowHit.RemoveAllListeners();
+        OnArrowMiss.RemoveAllListeners();
+    }
+
+    private void OnEnable()=>restartButton.onClick.AddListener(OnRestartClick);
+    
+    private void OnDisable()=>
+        restartButton.onClick.RemoveListener(OnRestartClick); 
+
+    private void OnRestartClick()=>
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex-1);
 }

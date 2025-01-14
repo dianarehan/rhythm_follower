@@ -48,6 +48,21 @@ MonoBehaviour:
   hitWindowSeconds: 0.3
   musicSource: {fileID: 0}
   scoreSlider: {fileID: 0}
+  endGameCanvasGroup: {fileID: 0}
+  endGameScoreText: {fileID: 0}
+  restartButton: {fileID: 0}
+  winSceneText:
+  - Flawless rhythm, amazing!
+  - You're a rhythm master!
+  - You owned the stage!
+  - No notes missed, no regrets!
+  - Rhythm? Crushed it!
+  - Legendary rhythm unlocked!
+  loseSceneText:
+  - Looks like rhythm took a vacation!
+  - Your groove needs some fine-tuning!
+  - The beat was too strong this time
+  - "You\u2019ve fallen off the tempo!"
   OnArrowHit:
     m_PersistentCalls:
       m_Calls:

@@ -17,11 +17,17 @@ public class ArrowsGenerator : MonoBehaviour
     private double firstBeatOffset = 1;
     private float spawnY = 800f;
     private float targetY = 50f;
+    private float songDuration;
+
+    public event System.Action OnSongEnd;
 
     private void Start()
     {
+        tempoBPM= SoundSelector.Instance.CurrentSound.Tempo;
+        songDuration = SoundSelector.Instance.CurrentSound.TimeInSec;
+
         beatsToSeconds = 60.0 / tempoBPM;
-        double startTime = AudioSettings.dspTime + 3 + SPAWN_AHEAD_TIME;
+        double startTime = AudioSettings.dspTime + 2 + SPAWN_AHEAD_TIME;
         nextSpawnTime = startTime + firstBeatOffset;
 
         musicSource.PlayScheduled(startTime);
@@ -36,6 +42,13 @@ public class ArrowsGenerator : MonoBehaviour
 
             if (currentTime >= startTime && currentTime + SPAWN_AHEAD_TIME >= nextSpawnTime)
             {
+                Debug.Log("Current Time: " + currentTime + " Next Spawn Time: " + nextSpawnTime + " Song Duration: " + songDuration);
+                if (currentTime - startTime >= songDuration)
+                {
+                    OnSongEnd?.Invoke();
+                    yield break;
+                }
+
                 GenerateRandomArrow(nextSpawnTime);
                 nextSpawnTime += beatsToSeconds;
             }
