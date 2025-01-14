@@ -64,12 +64,11 @@ public class SoundSelector : MonoBehaviour
             AudioSource audioSource = FindAnyObjectByType<AudioSource>();
             audioSource.clip = CurrentSound.Clip;
             Debug.Log("SoundSelector: " + CurrentSound.Clip.name);
-        }   
-    }
-
-    private void OnDestroy()
-    {
-        left?.onClick.RemoveListener(OnLeftClick);
-        right?.onClick.RemoveListener(OnRightClick);
+        }  
+        left = GameObject.Find("LeftButton")?.GetComponent<Button>();
+        right = GameObject.Find("RightButton")?.GetComponent<Button>();
+        soundNameText = GameObject.Find("SoundName")?.GetComponent<TextMeshProUGUI>();
+        left.onClick.AddListener(OnLeftClick);
+        right.onClick.AddListener(OnRightClick);
     }
 }

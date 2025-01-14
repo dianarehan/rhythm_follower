@@ -301,7 +301,7 @@ GameObject:
   - component: {fileID: 309740191}
   - component: {fileID: 309740190}
   m_Layer: 5
-  m_Name: Left
+  m_Name: LeftButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1064,10 +1064,10 @@ MonoBehaviour:
   sounds:
   - clip: {fileID: 8300000, guid: 29acfddc63467fd42bd022287889ab36, type: 3}
     tempo: 147
-    timeInSec: 166
+    timeInSec: 142
   - clip: {fileID: 8300000, guid: 7ad2933f14263c842aae5588a08a5192, type: 3}
     tempo: 150
-    timeInSec: 285
+    timeInSec: 222
   soundNameText: {fileID: 191615185}
   left: {fileID: 309740191}
   right: {fileID: 1738937390}
@@ -1821,7 +1821,7 @@ GameObject:
   - component: {fileID: 1738937391}
   - component: {fileID: 1738937390}
   m_Layer: 5
-  m_Name: Right
+  m_Name: RightButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4513,6 +4513,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1651577680485352870, guid: 170254d893f73644da60dd8131ce3e79, type: 3}
+      propertyPath: m_Name
+      value: SoundName
+      objectReference: {fileID: 0}
     - target: {fileID: 3351241175007906600, guid: 170254d893f73644da60dd8131ce3e79, type: 3}
       propertyPath: m_Enabled
       value: 0
