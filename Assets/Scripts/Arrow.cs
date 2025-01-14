@@ -48,6 +48,7 @@ public class Arrow : MonoBehaviour
 
     public IEnumerator AnimateAndDestroyArrow(Arrow arrow)
     {
+        if(arrow == null) yield break;
         RectTransform rect = arrow.GetComponent<RectTransform>();
         float elapsed = 0f;
         float duration = 0.2f;

@@ -2643,6 +2643,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1562166529}
     - target: {fileID: 3160231458220529642, guid: 3f124db9012246048a9748898a97e96a, type: 3}
+      propertyPath: hitWindowSeconds
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3160231458220529642, guid: 3f124db9012246048a9748898a97e96a, type: 3}
       propertyPath: endGameCanvasGroup
       value: 
       objectReference: {fileID: 1394119092}

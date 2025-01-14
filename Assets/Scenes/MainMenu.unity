@@ -1067,7 +1067,10 @@ MonoBehaviour:
     timeInSec: 142
   - clip: {fileID: 8300000, guid: 7ad2933f14263c842aae5588a08a5192, type: 3}
     tempo: 150
-    timeInSec: 222
+    timeInSec: 268
+  - clip: {fileID: 8300000, guid: 80d5fd3905a43c34d813015c72763dd4, type: 3}
+    tempo: 155
+    timeInSec: 130
   soundNameText: {fileID: 191615185}
   left: {fileID: 309740191}
   right: {fileID: 1738937390}

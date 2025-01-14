@@ -109,7 +109,7 @@ public class GameManager : MonoBehaviour
         OnArrowHit?.Invoke();
         Debug.Log($"{rating}! Score: {score}");
         if(arrow != null)
-            arrow.StartCoroutine(arrow.AnimateAndDestroyArrow(arrow));
+            arrow?.StartCoroutine(arrow?.AnimateAndDestroyArrow(arrow));
     }
 
     private void HandleMiss(Arrow arrow)
