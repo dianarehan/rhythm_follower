@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
-  productName: rhythm_follower
+  productName: Tempo Dash
   defaultCursor: {fileID: 2800000, guid: c0762f5c32ae738428f60d537be08554, type: 3}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.24528301, g: 0.093948, b: 0.13178183, a: 1}
@@ -848,8 +848,8 @@ PlayerSettings:
   editorAssembliesCompatibilityLevel: 1
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: rhythm_follower
-  metroPackageVersion: 
+  metroPackageName: rhythmfollower
+  metroPackageVersion: 1.0.0.0
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
@@ -857,7 +857,7 @@ PlayerSettings:
   metroCertificateNotAfter: 0000000000000000
   metroApplicationDescription: rhythm_follower
   wsaImages: {}
-  metroTileShortName: 
+  metroTileShortName: rhythm_follower
   metroTileShowName: 0
   metroMediumTileShowName: 0
   metroLargeTileShowName: 0
