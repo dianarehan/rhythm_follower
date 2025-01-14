@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour
         scoreSlider.gameObject.SetActive(false);
         //play some random animatons tany gher ely fel list
         endGameCanvasGroup.alpha = 1;
-        if(score > 6000)
+        if(score > 5000)
             endGameScoreText.text= winSceneText[Random.Range(0, winSceneText.Length)];
         else
             endGameScoreText.text = loseSceneText[Random.Range(0, loseSceneText.Length)];
