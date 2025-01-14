@@ -712,7 +712,7 @@ MonoBehaviour:
   - {fileID: 941137260}
   - {fileID: 364951716}
   - {fileID: 726058247}
-  lerpSpeed: 0.1
+  lerpSpeed: 0.2
 --- !u!1 &364951715
 GameObject:
   m_ObjectHideFlags: 0
@@ -1069,7 +1069,7 @@ MonoBehaviour:
     tempo: 150
     timeInSec: 268
   - clip: {fileID: 8300000, guid: 80d5fd3905a43c34d813015c72763dd4, type: 3}
-    tempo: 155
+    tempo: 180
     timeInSec: 130
   soundNameText: {fileID: 191615185}
   left: {fileID: 309740191}

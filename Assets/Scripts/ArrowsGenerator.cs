@@ -11,6 +11,7 @@ public class ArrowsGenerator : MonoBehaviour
     [SerializeField] private RectTransform targetArrowsContainer;
     [SerializeField] private float tempoBPM = 120f;
     [SerializeField] private AudioSource musicSource;
+    [SerializeField] private AudioClip endMusic;
 
     private double nextSpawnTime;
     private double beatsToSeconds;
@@ -39,12 +40,13 @@ public class ArrowsGenerator : MonoBehaviour
         while (true)
         {
             double currentTime = AudioSettings.dspTime;
-
+            tempoBPM = SoundSelector.Instance.CurrentSound.Tempo;
             if (currentTime >= startTime && currentTime + SPAWN_AHEAD_TIME >= nextSpawnTime)
             {
                 if (currentTime - startTime >= songDuration)
                 {
                     OnSongEnd?.Invoke();
+                    musicSource.clip = endMusic;
                     yield break;
                 }
                 GenerateRandomArrow(nextSpawnTime);
