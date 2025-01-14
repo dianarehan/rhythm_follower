@@ -68,7 +68,7 @@ public class SoundSelector : MonoBehaviour
         left = GameObject.Find("LeftButton")?.GetComponent<Button>();
         right = GameObject.Find("RightButton")?.GetComponent<Button>();
         soundNameText = GameObject.Find("SoundName")?.GetComponent<TextMeshProUGUI>();
-        left.onClick.AddListener(OnLeftClick);
-        right.onClick.AddListener(OnRightClick);
+        left?.onClick.AddListener(OnLeftClick);
+        right?.onClick.AddListener(OnRightClick);
     }
 }
