@@ -16,7 +16,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Button restartButton;
     [SerializeField] private string[] winSceneText;
     [SerializeField] private string[] loseSceneText;
-
     public UnityEvent OnArrowHit;
     public UnityEvent OnArrowMiss;
 
@@ -53,12 +52,12 @@ public class GameManager : MonoBehaviour
         arrowsParent.gameObject.SetActive(false);
         scoreSlider.gameObject.SetActive(false);
         //play some random animatons tany gher ely fel list
-        //play sound 
         endGameCanvasGroup.alpha = 1;
         if(score > 6000)
             endGameScoreText.text= winSceneText[Random.Range(0, winSceneText.Length)];
         else
             endGameScoreText.text = loseSceneText[Random.Range(0, loseSceneText.Length)];
+        musicSource.Play();
     }
 
     private void CheckArrowTiming()
